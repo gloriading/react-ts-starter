@@ -1,0 +1,14 @@
+{
+  "editor.tabSize": 2,
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.nodePath": "./node_modules/",
+  "eslint.options": {
+    "eslintrc": "./.eslintrc.json"
+  },
+  "eslint.validate": ["javascript", "typescript"],
+  "files.eol": "auto"
+}
