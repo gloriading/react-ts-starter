@@ -1,34 +1,45 @@
 import React, { useState } from 'react';
-import { REACT_URL, VITE_URL } from './constants';
-import logo from '../../assets/images/logo.svg';
 import styles from './App.module.scss';
+import TodoList from './components/todoList/TodoList';
+import TodoForm from './components/todoForm/TodoForm';
+import { Todo } from './components/todoItem/TodoItem';
+
+const mockTodos: Todo[] = [
+  {
+    id: 1,
+    content: 'content 1',
+    isDone: false,
+  },
+  {
+    id: 2,
+    content: 'content 2',
+    isDone: false,
+  },
+];
 
 export function App(): JSX.Element {
-  const [count, setCount] = useState(0);
+  const [todos, setTodos] = useState<Todo[]>(mockTodos);
+
+  const addTodo = (content: string) => {
+    const newId = (todos[todos.length - 1].id as number) + 1;
+    const isDone = false;
+    setTodos((prevTodos) => [...prevTodos, { id: newId, content, isDone }]);
+  };
+
+  const updateTodo = (updatedTodo: Todo) => {
+    const newTodos = todos.map((todo) => (todo.id === updatedTodo.id ? updatedTodo : todo));
+    setTodos(newTodos);
+  };
+
+  const deleteTodo = (id: string | number) => {
+    const newTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(newTodos);
+  };
 
   return (
     <div className={styles.app}>
-      <header className={styles.header}>
-        <img src={logo} className={styles.logo} alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((_count) => _count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a className={styles.link} href={REACT_URL} target="_blank" rel="noopener noreferrer">
-            Learn React
-          </a>
-          {' | '}
-          <a className={styles.link} href={VITE_URL} target="_blank" rel="noopener noreferrer">
-            Vite Docs
-          </a>
-        </p>
-      </header>
+      <TodoForm addTodo={addTodo} />
+      <TodoList todos={todos} updateTodo={updateTodo} deleteTodo={deleteTodo} />
     </div>
   );
 }

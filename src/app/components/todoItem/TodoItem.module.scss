@@ -1,0 +1,13 @@
+@import '../../../../assets/css/config';
+
+.todoItem {
+  background-color: lighten($background-primary-color, 10%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.todoItem > * {
+  margin: 0 2rem;
+}
