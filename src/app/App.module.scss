@@ -1,12 +1,61 @@
 @import '../../assets/css/config';
 
 .app {
-  text-align: center;
   background-color: $background-primary-color;
   color: $text-primary-color;
   height: 100vh;
-  overflow: hidden;
-  display: grid;
-  grid-template-rows: 1fr 4fr;
+  overflow: hidden; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: $font-normal;
+  position: relative;
+}
+
+.controls {
+  width: 50px;
+  height: 80vh;
+  // border: thin solid red;
+}
+.showFormBtn {
+  position: relative;
+  background-color: $accent-color;
+  box-shadow: rgba($text-primary-color, 0.15) 1.95px 1.95px 2.6px;
+  color: $main-white;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  transition: all 0.2 ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken($accent-color, 5%);
+    // box-shadow: rgba($text-primary-color, 0.55) 1.95px 1.95px 2.6px;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+.showFormBtn > * {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: $main-white;
+}
+
+@media screen and (max-width: 480px) {
+  .todoContainer {
+    width: 350px;
+    height: 90vh;
+  }
+  .controls {
+    width: 40px;
+    height: 90vh;
+  }
+  .showFormBtn {
+    height: 35px;
+    width: 35px;
+  }
 }

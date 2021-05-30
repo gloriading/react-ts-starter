@@ -2,17 +2,22 @@ import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
 import styles from './TodoForm.module.scss';
 import BaseButton from '../utils/BaseButton';
 
-interface Props {
+export interface TodoFormProps {
   addTodo: (content: string) => void;
+  toggleForm: () => void;
 }
 
-function TodoForm({ addTodo }: Props): JSX.Element {
+function TodoForm({ addTodo, toggleForm }: TodoFormProps): JSX.Element {
   const [input, setInput] = useState('');
 
   const onClickAdd = () => {
-    if (!input.trim()) return;
+    if (!input.trim()) {
+      setInput('');
+      return;
+    }
     addTodo(input);
     setInput('');
+    toggleForm();
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -27,8 +32,14 @@ function TodoForm({ addTodo }: Props): JSX.Element {
 
   return (
     <div className={styles.todoForm}>
-      <input type="text" value={input} onChange={handleInputChange} onKeyDown={handleKeyDown} />
-      <BaseButton type="btnOutlined" event={onClickAdd} display="Add" />
+      <input
+        type="text"
+        value={input}
+        onChange={handleInputChange}
+        onKeyDown={handleKeyDown}
+        data-testid="todo-form-input"
+      />
+      <BaseButton type="btnOutlined" event={onClickAdd} display="Add" data-testid="todo-form-btn" />
     </div>
   );
 }

@@ -4,21 +4,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem 0;
+  width: 100%;
 }
 
 input[type="text"] {
-  align-self: center;
-  justify-self: center;
   font-size: 1rem;
   line-height: 30px;
+  width: 250px;
+  margin-right: 1rem;
+  border: 2px solid lighten($text-primary-color, 50%);
+  border-radius: 4px;
 
   &:focus {
     outline-color: $accent-color;
     border-color: $accent-color;
   }
-}
-
-.addBtn {
-  align-self: center;
-  justify-self: center;
 }

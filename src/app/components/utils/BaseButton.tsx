@@ -1,17 +1,15 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styles from './BaseButton.module.scss';
 
-interface Props {
+export interface ButtonProps {
   type: string;
   event: () => void;
-  display: string;
+  display: string | ReactNode;
 }
 
-function BaseButton({ type, event, display }: Props): JSX.Element {
-  const btnClass = styles[type] || '';
-
+function BaseButton({ type, event, display }: ButtonProps): JSX.Element {
   return (
-    <div className={btnClass} onClick={event} aria-hidden="true">
+    <div className={styles[type]} onClick={event} aria-hidden="true" data-testid="base-button">
       {display}
     </div>
   );

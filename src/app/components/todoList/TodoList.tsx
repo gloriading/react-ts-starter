@@ -2,7 +2,7 @@ import React from 'react';
 import TodoItem, { Todo } from '../todoItem/TodoItem';
 import styles from './TodoList.module.scss';
 
-interface TodoListProps {
+export interface TodoListProps {
   todos: Todo[];
   updateTodo: (todo: Todo) => void;
   deleteTodo: (id: string | number) => void;

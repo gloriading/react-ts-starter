@@ -1,5 +1,5 @@
 $text-primary-color: #333;
-$background-primary-color: #DDD;
+$background-primary-color: whitesmoke;
 $main-white: #FFF;
 $accent-color: hotpink;
 $font-small: 12px;
@@ -11,6 +11,15 @@ $font-normal: 14px;
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  width: 400px;
+  height: 80vh;
+  border: thin solid rgba($text-primary-color, 0.2);
+  border-radius: 5px;
+  padding: 1rem;
+  overflow: auto;
 }
 
 @import 'button';

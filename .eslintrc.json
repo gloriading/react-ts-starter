@@ -36,6 +36,7 @@
         "tabWidth": 2,
         "trailingComma": "all"
       }
-    ]
+    ],
+    "react/jsx-props-no-spreading": "off"
   }
 }
