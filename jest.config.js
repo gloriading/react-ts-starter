@@ -20,6 +20,7 @@ const config = {
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json', 'jsx', 'node'],
   testEnvironment: 'jest-environment-jsdom',
+  moduleDirectories: ['node_modules', 'src/app'],
 };
 
 export default config;

@@ -1,91 +1,57 @@
 import React, { useState } from 'react';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 import styles from './App.module.scss';
-import TodoList from './components/todoList/TodoList';
-import TodoForm from './components/todoForm/TodoForm';
-import { Todo } from './components/todoItem/TodoItem';
+import QuoteList from './components/quoteList/QuoteList';
+import AddQuote from './components/addQuote/AddQuote';
+import { Quote } from './components/quote/OneQuote';
 
-const mockTodos: Todo[] = [
+const mockQuotes: Quote[] = [
   {
     id: 1,
-    content: 'content 1',
-    isDone: false,
+    content:
+      '“Many of life’s failures are people who did not realize how close they were to success when they gave up.”– Thomas A. Edison',
+    isHighlight: false,
   },
   {
     id: 2,
-    content: 'content 2',
-    isDone: false,
+    content: '“If you want to live a happy life, tie it to a goal, not to people or things.”– Albert Einstein',
+    isHighlight: false,
   },
   {
     id: 3,
-    content: 'content 1',
-    isDone: false,
+    content: '“The big lesson in life, baby, is never be scared of anyone or anything.”– Frank Sinatra',
+    isHighlight: false,
   },
   {
     id: 4,
-    content: 'content 2',
-    isDone: false,
+    content: '“Turn your wounds into wisdom.” — Oprah Winfrey',
+    isHighlight: false,
   },
   {
     id: 5,
-    content: 'content 5',
-    isDone: false,
-  },
-  {
-    id: 6,
-    content: 'content 6',
-    isDone: false,
-  },
-  {
-    id: 7,
-    content: 'content 7',
-    isDone: false,
-  },
-  {
-    id: 8,
-    content: 'content 8',
-    isDone: false,
-  },
-  {
-    id: 9,
-    content: 'content 9',
-    isDone: false,
-  },
-  {
-    id: 10,
-    content: 'content 10',
-    isDone: false,
-  },
-  {
-    id: 11,
-    content: 'content 11',
-    isDone: false,
-  },
-  {
-    id: 12,
-    content: 'content 12',
-    isDone: false,
+    content: '“Everything negative – pressure, challenges – is all an opportunity for me to rise.” — Kobe Bryant',
+    isHighlight: false,
   },
 ];
 
 export function App(): JSX.Element {
-  const [todos, setTodos] = useState<Todo[]>(mockTodos);
+  const [quotes, setQuotes] = useState<Quote[]>(mockQuotes);
   const [showForm, setShowForm] = useState<boolean>(false);
 
-  const addTodo = (content: string) => {
-    const newId = (todos[todos.length - 1].id as number) + 1;
-    const isDone = false;
-    setTodos((prevTodos) => [...prevTodos, { id: newId, content, isDone }]);
+  const addQuote = (content: string) => {
+    const newId = (quotes[quotes.length - 1].id as number) + 1;
+    const isHighlight = false;
+    setQuotes((prevQuotes) => [...prevQuotes, { id: newId, content, isHighlight }]);
   };
 
-  const updateTodo = (updatedTodo: Todo) => {
-    const newTodos = todos.map((todo) => (todo.id === updatedTodo.id ? updatedTodo : todo));
-    setTodos(newTodos);
+  const updateQuote = (updatedQuote: Quote) => {
+    const newQuote = quotes.map((quote) => (quote.id === updatedQuote.id ? updatedQuote : quote));
+    setQuotes(newQuote);
   };
 
-  const deleteTodo = (id: string | number) => {
-    const newTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(newTodos);
+  const deleteQuote = (id: string | number) => {
+    const newQuotes = quotes.filter((quote) => quote.id !== id);
+    setQuotes(newQuotes);
   };
 
   const toggleForm = () => {
@@ -95,11 +61,11 @@ export function App(): JSX.Element {
   return (
     <div className={styles.app}>
       <div className={styles.container}>
-        {showForm && <TodoForm addTodo={addTodo} toggleForm={toggleForm} />}
-        <TodoList todos={todos} updateTodo={updateTodo} deleteTodo={deleteTodo} />
+        {showForm && <AddQuote addQuote={addQuote} toggleForm={toggleForm} />}
+        <QuoteList quotes={quotes} updateQuote={updateQuote} deleteQuote={deleteQuote} />
       </div>
 
-      <div className={styles.controls}>
+      <div className={styles.toolBar}>
         <div className={styles.showFormBtn} onClick={toggleForm} aria-hidden="true">
           {showForm ? <FaMinus /> : <FaPlus />}
         </div>

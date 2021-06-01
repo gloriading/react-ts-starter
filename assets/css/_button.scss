@@ -21,3 +21,15 @@
   @extend %btn;
   border: 1px solid lighten($text-primary-color, 50%);
 }
+
+.btnIcon {
+  display: inline-block;
+  padding: 8px;
+  margin: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: rotate(15deg);
+  }
+}

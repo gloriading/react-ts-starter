@@ -1,13 +1,13 @@
 import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
-import styles from './TodoForm.module.scss';
+import styles from './AddQuote.module.scss';
 import BaseButton from '../utils/BaseButton';
 
-export interface TodoFormProps {
-  addTodo: (content: string) => void;
+export interface AddQuoteProps {
+  addQuote: (content: string) => void;
   toggleForm: () => void;
 }
 
-function TodoForm({ addTodo, toggleForm }: TodoFormProps): JSX.Element {
+function AddQuote({ addQuote, toggleForm }: AddQuoteProps): JSX.Element {
   const [input, setInput] = useState('');
 
   const onClickAdd = () => {
@@ -15,7 +15,7 @@ function TodoForm({ addTodo, toggleForm }: TodoFormProps): JSX.Element {
       setInput('');
       return;
     }
-    addTodo(input);
+    addQuote(input);
     setInput('');
     toggleForm();
   };
@@ -31,17 +31,17 @@ function TodoForm({ addTodo, toggleForm }: TodoFormProps): JSX.Element {
   };
 
   return (
-    <div className={styles.todoForm}>
+    <div className={styles.addQuote}>
       <input
         type="text"
         value={input}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
-        data-testid="todo-form-input"
+        data-testid="add-quote-input"
       />
-      <BaseButton type="btnOutlined" event={onClickAdd} display="Add" data-testid="todo-form-btn" />
+      <BaseButton type="btnOutlined" event={onClickAdd} display="Add" data-testid="add-quote-btn" />
     </div>
   );
 }
 
-export default TodoForm;
+export default AddQuote;

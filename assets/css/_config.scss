@@ -22,4 +22,12 @@ body {
   overflow: auto;
 }
 
+
+@media screen and (max-width: 480px) {
+  .container {
+    width: 350px;
+    height: 90vh;
+  }
+}
+
 @import 'button';

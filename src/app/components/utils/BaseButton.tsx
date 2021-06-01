@@ -1,9 +1,9 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, MouseEvent } from 'react';
 import styles from './BaseButton.module.scss';
 
 export interface ButtonProps {
   type: string;
-  event: () => void;
+  event: (e?: MouseEvent<HTMLElement>) => void;
   display: string | ReactNode;
 }
 

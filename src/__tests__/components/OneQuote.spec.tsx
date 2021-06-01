@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, cleanup, configure, fireEvent } from '@testing-library/react';
 
-import TodoItem, { TodoProps } from '../../app/components/todoItem/TodoItem';
+import OneQuote, { QuoteProps } from '../../app/components/quote/OneQuote';
 
-describe('<TodoItem />', () => {
+describe('<OneQuote />', () => {
   beforeEach(() => {
     configure({
       throwSuggestions: true,
@@ -12,29 +12,29 @@ describe('<TodoItem />', () => {
 
   afterEach(cleanup);
 
-  const mockTodo = {
+  const mockQuote = {
     id: 10,
     content: 'Mock Content',
-    isDone: false,
+    isHighlight: false,
   };
 
-  const updateTodo = jest.fn();
-  const deleteTodo = jest.fn();
+  const mockUpdateQuote = jest.fn();
+  const mockDeleteQuote = jest.fn();
 
-  const defaultProps: TodoProps = {
-    ...mockTodo,
-    updateTodo,
-    deleteTodo,
+  const defaultProps: QuoteProps = {
+    ...mockQuote,
+    updateQuote: mockUpdateQuote,
+    deleteQuote: mockDeleteQuote,
   };
 
   test('the text content is rendered', () => {
-    const { getByText } = render(<TodoItem {...defaultProps} />);
+    const { getByText } = render(<OneQuote {...defaultProps} />);
     const contentElm = getByText(/mock content/i);
-    expect(contentElm.textContent).toBe(mockTodo.content);
+    expect(contentElm.textContent).toBe(mockQuote.content);
   });
 
   test('buttons are rendered', () => {
-    const { getByTestId } = render(<TodoItem {...defaultProps} />);
+    const { getByTestId } = render(<OneQuote {...defaultProps} />);
     const btnContainer = getByTestId('action-container');
     const [statusBtn, deleteBtn] = btnContainer.getElementsByClassName('btnOutlined');
 
@@ -43,25 +43,25 @@ describe('<TodoItem />', () => {
   });
 
   test('events are called when buttons are clicked', () => {
-    const { getByTestId } = render(<TodoItem {...defaultProps} />);
+    const { getByTestId } = render(<OneQuote {...defaultProps} />);
     const btnContainer = getByTestId('action-container');
     const [statusBtn, deleteBtn] = btnContainer.getElementsByClassName('btnOutlined');
 
     fireEvent.click(deleteBtn);
-    expect(deleteTodo).toHaveBeenCalled();
+    expect(mockDeleteQuote).toHaveBeenCalled();
 
     fireEvent.click(statusBtn);
-    expect(updateTodo).toHaveBeenCalled();
+    expect(mockUpdateQuote).toHaveBeenCalled();
   });
 
   test('status button display updates when the status is updated', () => {
-    const { getByTestId, rerender } = render(<TodoItem {...defaultProps} />);
+    const { getByTestId, rerender } = render(<OneQuote {...defaultProps} />);
     const btnContainer = getByTestId('action-container');
     const [statusBtn] = btnContainer.getElementsByClassName('btnOutlined');
 
     expect(statusBtn.textContent).toBe('Not Done');
 
-    rerender(<TodoItem {...defaultProps} isDone />);
+    rerender(<OneQuote {...defaultProps} isHighlight />);
     expect(statusBtn.textContent).toBe('Done');
   });
 });

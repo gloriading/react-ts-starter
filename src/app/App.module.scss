@@ -12,7 +12,7 @@
   position: relative;
 }
 
-.controls {
+.toolBar {
   width: 50px;
   height: 80vh;
   // border: thin solid red;
@@ -30,7 +30,6 @@
 
   &:hover {
     background-color: darken($accent-color, 5%);
-    // box-shadow: rgba($text-primary-color, 0.55) 1.95px 1.95px 2.6px;
   }
 
   &:active {
@@ -46,10 +45,6 @@
 }
 
 @media screen and (max-width: 480px) {
-  .todoContainer {
-    width: 350px;
-    height: 90vh;
-  }
   .controls {
     width: 40px;
     height: 90vh;
