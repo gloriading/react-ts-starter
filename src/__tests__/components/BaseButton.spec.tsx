@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, cleanup, fireEvent } from '@testing-library/react';
 
-import BaseButton, { ButtonProps } from '../../app/components/utils/BaseButton';
+import { BaseButton } from 'components';
 
 describe('<BaseButton />', () => {
   afterEach(cleanup);
@@ -9,7 +9,7 @@ describe('<BaseButton />', () => {
   const buttonText = 'Test Button';
   const buttonEvent = jest.fn();
 
-  const defaultProps: ButtonProps = {
+  const defaultProps: BaseButton = {
     type: 'btnOutlined',
     display: buttonText,
     event: buttonEvent,

@@ -1,13 +1,15 @@
+/* eslint-disable @typescript-eslint/no-redeclare */
 import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
+import { HiOutlinePlus } from 'react-icons/hi';
 import styles from './AddQuote.module.scss';
 import BaseButton from '../utils/BaseButton';
 
-export interface AddQuoteProps {
+interface AddQuote {
   addQuote: (content: string) => void;
   toggleForm: () => void;
 }
 
-function AddQuote({ addQuote, toggleForm }: AddQuoteProps): JSX.Element {
+function AddQuote({ addQuote, toggleForm }: AddQuote): JSX.Element {
   const [input, setInput] = useState('');
 
   const onClickAdd = () => {
@@ -39,7 +41,7 @@ function AddQuote({ addQuote, toggleForm }: AddQuoteProps): JSX.Element {
         onKeyDown={handleKeyDown}
         data-testid="add-quote-input"
       />
-      <BaseButton type="btnOutlined" event={onClickAdd} display="Add" data-testid="add-quote-btn" />
+      <BaseButton type="btnPrimary" event={onClickAdd} display={<HiOutlinePlus />} data-testid="add-quote-btn" />
     </div>
   );
 }

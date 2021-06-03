@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, cleanup, fireEvent } from '@testing-library/react';
 
-import AddQuote, { AddQuoteProps } from '../../app/components/addQuote/AddQuote';
+import { AddQuote } from 'components';
 
 describe('<AddQuote />', () => {
   afterEach(cleanup);
@@ -9,7 +9,7 @@ describe('<AddQuote />', () => {
   const addQuoteFn = jest.fn();
   const toggleForm = jest.fn();
 
-  const defaultProps: AddQuoteProps = {
+  const defaultProps: AddQuote = {
     addQuote: addQuoteFn,
     toggleForm,
   };

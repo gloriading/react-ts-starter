@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, cleanup, configure, fireEvent } from '@testing-library/react';
-
-import OneQuote, { QuoteProps } from '../../app/components/quote/OneQuote';
+import { OneQuote } from 'components';
 
 describe('<OneQuote />', () => {
   beforeEach(() => {
@@ -16,15 +15,15 @@ describe('<OneQuote />', () => {
     id: 10,
     content: 'Mock Content',
     isHighlight: false,
+    isFav: false,
+    isArchived: false,
   };
 
   const mockUpdateQuote = jest.fn();
-  const mockDeleteQuote = jest.fn();
 
-  const defaultProps: QuoteProps = {
+  const defaultProps: OneQuote = {
     ...mockQuote,
     updateQuote: mockUpdateQuote,
-    deleteQuote: mockDeleteQuote,
   };
 
   test('the text content is rendered', () => {
@@ -33,35 +32,19 @@ describe('<OneQuote />', () => {
     expect(contentElm.textContent).toBe(mockQuote.content);
   });
 
-  test('buttons are rendered', () => {
+  test('the quote status is toggled on click', () => {
     const { getByTestId } = render(<OneQuote {...defaultProps} />);
-    const btnContainer = getByTestId('action-container');
-    const [statusBtn, deleteBtn] = btnContainer.getElementsByClassName('btnOutlined');
-
-    expect(statusBtn.textContent).toBe('Not Done');
-    expect(deleteBtn.textContent).toBe('Delete');
-  });
-
-  test('events are called when buttons are clicked', () => {
-    const { getByTestId } = render(<OneQuote {...defaultProps} />);
-    const btnContainer = getByTestId('action-container');
-    const [statusBtn, deleteBtn] = btnContainer.getElementsByClassName('btnOutlined');
-
-    fireEvent.click(deleteBtn);
-    expect(mockDeleteQuote).toHaveBeenCalled();
-
-    fireEvent.click(statusBtn);
+    const quoteElm = getByTestId('one-quote');
+    fireEvent.click(quoteElm);
     expect(mockUpdateQuote).toHaveBeenCalled();
   });
 
-  test('status button display updates when the status is updated', () => {
-    const { getByTestId, rerender } = render(<OneQuote {...defaultProps} />);
-    const btnContainer = getByTestId('action-container');
-    const [statusBtn] = btnContainer.getElementsByClassName('btnOutlined');
+  test('classNames are set correctly', () => {
+    const updatedMockQuote = { ...mockQuote, isHighlight: true };
+    const { getByTestId } = render(<OneQuote {...defaultProps} {...updatedMockQuote} />);
+    const quoteElm = getByTestId('one-quote');
 
-    expect(statusBtn.textContent).toBe('Not Done');
-
-    rerender(<OneQuote {...defaultProps} isHighlight />);
-    expect(statusBtn.textContent).toBe('Done');
+    expect(quoteElm.classList.contains('oneQuote')).toBeTruthy();
+    expect(quoteElm.classList.contains('highlight')).toBeTruthy();
   });
 });

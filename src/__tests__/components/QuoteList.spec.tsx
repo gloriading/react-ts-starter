@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 
-import QuoteList, { QuoteListProps } from '../../app/components/quoteList/QuoteList';
+import { QuoteList } from 'components';
 
 describe('<QuoteList />', () => {
   afterEach(cleanup);
@@ -11,17 +11,26 @@ describe('<QuoteList />', () => {
       id: 1,
       content: 'mock 1',
       isHighlight: false,
+      isFav: false,
+      isArchived: false,
+    },
+    {
+      id: 2,
+      content: 'mock 2',
+      isHighlight: false,
+      isFav: false,
+      isArchived: false,
     },
   ];
 
-  const defaultProps: QuoteListProps = {
+  const defaultProps: QuoteList = {
     quotes: mockQuotes,
     updateQuote: jest.fn(),
-    deleteQuote: jest.fn(),
   };
 
   test('child component is rendered', () => {
-    const { getByText } = render(<QuoteList {...defaultProps} />);
-    expect(getByText(/delete/i)).toBeInTheDocument();
+    const { getAllByTestId } = render(<QuoteList {...defaultProps} />);
+    const childrenCom = getAllByTestId('one-quote');
+    expect(childrenCom).toHaveLength(mockQuotes.length);
   });
 });
