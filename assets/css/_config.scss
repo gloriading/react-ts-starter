@@ -2,6 +2,7 @@ $text-primary-color: #333;
 $background-primary-color: whitesmoke;
 $main-white: #FFF;
 $accent-color: hotpink;
+$main-border-color: rgba($text-primary-color, 0.2);
 $font-small: 12px;
 $font-normal: 14px;
 
@@ -16,7 +17,7 @@ body {
 .container {
   width: 400px;
   height: 80vh;
-  border: thin solid rgba($text-primary-color, 0.2);
+  border: thin solid $main-border-color;
   border-radius: 5px;
   padding: 1rem;
   overflow: auto;

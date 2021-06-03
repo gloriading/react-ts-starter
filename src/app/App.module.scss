@@ -12,11 +12,6 @@
   position: relative;
 }
 
-.toolBar {
-  width: 50px;
-  height: 80vh;
-  // border: thin solid red;
-}
 .showFormBtn {
   position: relative;
   background-color: $accent-color;
@@ -45,10 +40,6 @@
 }
 
 @media screen and (max-width: 480px) {
-  .controls {
-    width: 40px;
-    height: 90vh;
-  }
   .showFormBtn {
     height: 35px;
     width: 35px;

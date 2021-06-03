@@ -9,6 +9,8 @@
 
   &:hover {
     transform: scale(0.98);
+    box-shadow: rgba($text-primary-color, 0.15) 1.95px 1.95px 2.6px;
+
   }
 }
 
@@ -23,13 +25,12 @@
 }
 
 .btnIcon {
-  display: inline-block;
-  padding: 8px;
-  margin: 3px;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  @extend %btn;
+  padding: 6px 8px 5px 8px;
+  border: none;
+  color: lighten($text-primary-color, 20%);
 
   &:hover {
-    transform: rotate(15deg);
+    color: $text-primary-color;
   }
 }

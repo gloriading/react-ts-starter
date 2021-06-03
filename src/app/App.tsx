@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { FaPlus, FaMinus } from 'react-icons/fa';
 import styles from './App.module.scss';
 import QuoteList from './components/quoteList/QuoteList';
 import AddQuote from './components/addQuote/AddQuote';
 import { Quote } from './components/quote/OneQuote';
+import ToolBar from './components/toolBar/ToolBar';
 
 const mockQuotes: Quote[] = [
   {
@@ -49,8 +49,8 @@ export function App(): JSX.Element {
     setQuotes(newQuote);
   };
 
-  const deleteQuote = (id: string | number) => {
-    const newQuotes = quotes.filter((quote) => quote.id !== id);
+  const deleteQuotes = () => {
+    const newQuotes = quotes.filter((quote) => !quote.isHighlight);
     setQuotes(newQuotes);
   };
 
@@ -62,14 +62,10 @@ export function App(): JSX.Element {
     <div className={styles.app}>
       <div className={styles.container}>
         {showForm && <AddQuote addQuote={addQuote} toggleForm={toggleForm} />}
-        <QuoteList quotes={quotes} updateQuote={updateQuote} deleteQuote={deleteQuote} />
+        <QuoteList quotes={quotes} updateQuote={updateQuote} />
       </div>
 
-      <div className={styles.toolBar}>
-        <div className={styles.showFormBtn} onClick={toggleForm} aria-hidden="true">
-          {showForm ? <FaMinus /> : <FaPlus />}
-        </div>
-      </div>
+      <ToolBar deleteQuotes={deleteQuotes} showForm={showForm} toggleForm={toggleForm} />
     </div>
   );
 }
