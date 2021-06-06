@@ -1,28 +1,44 @@
 /* eslint-disable @typescript-eslint/no-redeclare */
 import React from 'react';
+import { QuoteControls } from 'components';
 import styles from './OneQuote.module.scss';
 
 export interface Quote {
-  id: string | number;
+  id: number;
   content: string;
-  isHighlight: boolean;
   isFav: boolean;
   isArchived: boolean;
 }
 interface OneQuote extends Quote {
-  updateQuote: (quote: Quote) => void;
+  handleQuoteUpdate: (quote: Quote) => void;
+  handleQuoteDelete: (id: number) => void;
 }
 
-function OneQuote({ id, content, isHighlight, isFav, isArchived, updateQuote }: OneQuote): JSX.Element {
-  const toggleHighlight = () => {
-    updateQuote({ id, content, isHighlight: !isHighlight, isFav, isArchived });
+function OneQuote({ id, content, isFav, isArchived, handleQuoteUpdate, handleQuoteDelete }: OneQuote): JSX.Element {
+  const baseQuote = { id, content, isArchived, isFav };
+
+  const toggleFav = () => {
+    handleQuoteUpdate({ ...baseQuote, isFav: !isFav });
   };
 
-  const quoteStyle = `${styles.oneQuote} ${isHighlight ? styles.highlight : ''}`;
+  const toggleArchive = () => {
+    handleQuoteUpdate({ ...baseQuote, isArchived: !isArchived });
+  };
+
+  const deleteQuote = () => {
+    handleQuoteDelete(id);
+  };
 
   return (
-    <div className={quoteStyle} onClick={toggleHighlight} aria-hidden="true" data-testid="one-quote">
+    <div className={styles.oneQuote} aria-hidden="true" data-testid="one-quote">
       <p>{content}</p>
+      <QuoteControls
+        deleteQuote={deleteQuote}
+        toggleArchive={toggleArchive}
+        toggleFav={toggleFav}
+        isFav={isFav}
+        isArchived={isArchived}
+      />
     </div>
   );
 }

@@ -13,22 +13,16 @@ describe('<ToolBar />', () => {
   afterEach(cleanup);
 
   const mockToggleForm = jest.fn();
-  const mockDeleteQuotes = jest.fn();
-  const mockAddToFavs = jest.fn();
-  const mockAddToArchieved = jest.fn();
 
   const defaultProps: ToolBar = {
     showForm: false,
     toggleForm: mockToggleForm,
-    deleteQuotes: mockDeleteQuotes,
-    addToFavs: mockAddToFavs,
-    addToArchieved: mockAddToArchieved,
   };
 
-  it('renders 4 buttons', () => {
+  it('renders 1 buttons', () => {
     const { getByTestId } = render(<ToolBar {...defaultProps} />);
     const container = getByTestId('tool-bar');
     const buttons = container.getElementsByClassName('btnPrimary');
-    expect(buttons.length).toBe(4);
+    expect(buttons.length).toBe(1);
   });
 });

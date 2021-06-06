@@ -4,7 +4,7 @@ import { IconContext } from 'react-icons';
 import { App } from './src/app/App';
 
 ReactDOM.render(
-  <IconContext.Provider value={{ size: '18px' }}>
+  <IconContext.Provider value={{ size: '16px' }}>
     <React.StrictMode>
       <App />
     </React.StrictMode>

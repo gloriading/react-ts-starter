@@ -1,0 +1,14 @@
+@import '../../../../assets/css/config';
+
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.controls > *:last-of-type {
+  margin-left: auto;
+}
+
+@media screen and (max-width: 480px) {
+}

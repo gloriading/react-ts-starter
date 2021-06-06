@@ -10,14 +10,12 @@ describe('<QuoteList />', () => {
     {
       id: 1,
       content: 'mock 1',
-      isHighlight: false,
       isFav: false,
       isArchived: false,
     },
     {
       id: 2,
       content: 'mock 2',
-      isHighlight: false,
       isFav: false,
       isArchived: false,
     },
@@ -25,7 +23,8 @@ describe('<QuoteList />', () => {
 
   const defaultProps: QuoteList = {
     quotes: mockQuotes,
-    updateQuote: jest.fn(),
+    handleQuoteDelete: jest.fn(),
+    handleQuoteUpdate: jest.fn(),
   };
 
   test('child component is rendered', () => {

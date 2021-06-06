@@ -4,11 +4,8 @@
   background-color: lighten($background-primary-color, 10%);
   box-shadow: rgba($text-primary-color, 0.15) 1.95px 1.95px 2.6px;
   border-radius: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-bottom: 10px;
-  padding: 0.5rem;
+  padding: 0.5rem 0.5rem 0 0.5rem;
   cursor: pointer;
   transition: all 0.2s;
   position: relative;
@@ -21,10 +18,6 @@
     line-height: 1.5;
     margin: 0.5rem 1rem;
   }
-}
-
-.oneQuote > * {
-  margin: 0 2rem;
 }
 
 .highlight {

@@ -1,0 +1,46 @@
+{
+  "quotes": [
+    {
+      "id": 1,
+      "content": "“Many of life’s failures are people who did not realize how close they were to success when they gave up.”– Thomas A. Edison",
+      "isFav": false,
+      "isArchived": false
+    },
+    {
+      "id": 2,
+      "content": "“If you want to live a happy life, tie it to a goal, not to people or things.”– Albert Einstein",
+      "isFav": false,
+      "isArchived": false
+    },
+    {
+      "id": 3,
+      "content": "“The big lesson in life, baby, is never be scared of anyone or anything.”– Frank Sinatra",
+      "isFav": false,
+      "isArchived": true
+    },
+    {
+      "id": 4,
+      "content": "“Turn your wounds into wisdom.” — Oprah Winfrey'",
+      "isFav": true,
+      "isArchived": false
+    },
+    {
+      "id": 6,
+      "content": "\"We become what we think about.\" – Earl Nightingale",
+      "isArchived": false,
+      "isFav": true
+    },
+    {
+      "id": 8,
+      "content": "\"There is only one way to avoid criticism: do nothing, say nothing, and be nothing.\" – Aristotle",
+      "isArchived": false,
+      "isFav": false
+    },
+    {
+      "id": 9,
+      "content": "\"There is only one way to avoid criticism: do nothing, say nothing, and be nothing.\" – Aristotle",
+      "isArchived": false,
+      "isFav": true
+    }
+  ]
+}
