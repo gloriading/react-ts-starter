@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { ToolBar } from 'components';
+import { ToolBar, QuoteList, AddQuote, Modal } from 'components';
 import styles from './App.module.scss';
-import QuoteList from './components/quoteList/QuoteList';
-import AddQuote from './components/addQuote/AddQuote';
 import { Quote } from './components/quote/OneQuote';
 import { fetchQuotes, addQuote, deleteQuote, updateQuote } from './api/QuoteApi';
 
 export function App(): JSX.Element {
   const [quotes, setQuotes] = useState<Quote[]>([]);
-  const [showForm, setShowForm] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   useEffect(() => {
     const getQuotes = async () => {
@@ -42,18 +40,21 @@ export function App(): JSX.Element {
     setQuotes((preQuotes) => preQuotes.filter((quote) => quote.id !== id));
   };
 
-  const toggleForm = () => {
-    setShowForm(!showForm);
+  const closeModal = () => {
+    setShowModal(false);
   };
 
   return (
     <div className={styles.app}>
+      <Modal showModal={showModal} closeModal={closeModal}>
+        <AddQuote addQuote={handleQuoteAdd} toggleForm={closeModal} />
+      </Modal>
+
       <div className={styles.container}>
-        {showForm && <AddQuote addQuote={handleQuoteAdd} toggleForm={toggleForm} />}
         <QuoteList quotes={quotes} handleQuoteDelete={handleQuoteDelete} handleQuoteUpdate={handleQuoteUpdate} />
       </div>
 
-      <ToolBar showForm={showForm} toggleForm={toggleForm} />
+      <ToolBar showForm={showModal} addQuote={() => setShowModal(true)} />
     </div>
   );
 }

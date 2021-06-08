@@ -13,8 +13,8 @@ interface QuoteControls {
 }
 
 function QuoteControls({ deleteQuote, toggleArchive, toggleFav, isFav, isArchived }: QuoteControls): JSX.Element {
-  const isFavDisplay = isFav ? <HiHeart color="deeppink" /> : <HiOutlineHeart color="deeppink" />;
-  const isArchivedDisplay = isArchived ? <HiArchive color="gray" /> : <HiOutlineArchive color="gray" />;
+  const isFavDisplay = isFav ? <HiHeart color="#ff5252" /> : <HiOutlineHeart color="#ff5252" />;
+  const isArchivedDisplay = isArchived ? <HiArchive color="#84817a" /> : <HiOutlineArchive color="#84817a" />;
 
   return (
     <div className={styles.controls} data-testid="quote-controls">

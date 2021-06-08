@@ -1,0 +1,54 @@
+@import '../../../../assets/css/config';
+.backDrop {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba($text-primary-color, 0.7);
+}
+
+.showModal {
+  display: block;
+}
+
+.modalBody {
+  position: relative;
+  background-color: $background-primary-color;
+  margin: 10% auto; /* 15% from the top and centered */
+  padding: 1rem 2rem;
+  width: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.3s;
+  animation-name: animatetop;
+  animation-duration: 0.3s
+}
+
+.closeBtn {
+  color: lighten($text-primary-color, 30%);
+  float: right;
+  font-size: 28px;
+  transition: all 0.2s ease;
+}
+
+.closeBtn:hover,
+.closeBtn:focus {
+  color: $text-primary-color;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}

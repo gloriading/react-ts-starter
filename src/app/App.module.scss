@@ -12,36 +12,7 @@
   position: relative;
 }
 
-.showFormBtn {
-  position: relative;
-  background-color: $accent-color;
-  box-shadow: rgba($text-primary-color, 0.15) 1.95px 1.95px 2.6px;
-  color: $main-white;
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  transition: all 0.2 ease;
-  cursor: pointer;
-
-  &:hover {
-    background-color: darken($accent-color, 5%);
-  }
-
-  &:active {
-    transform: scale(0.98);
-  }
-}
-.showFormBtn > * {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: $main-white;
-}
 
 @media screen and (max-width: 480px) {
-  .showFormBtn {
-    height: 35px;
-    width: 35px;
-  }
+  
 }

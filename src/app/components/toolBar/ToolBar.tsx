@@ -6,13 +6,13 @@ import styles from './ToolBar.module.scss';
 
 interface ToolBar {
   showForm: boolean;
-  toggleForm: () => void;
+  addQuote: () => void;
 }
 
-function ToolBar({ showForm, toggleForm }: ToolBar): JSX.Element {
+function ToolBar({ showForm, addQuote }: ToolBar): JSX.Element {
   return (
     <div className={styles.toolBar} data-testid="tool-bar">
-      <BaseButton type="btnPrimary" display={showForm ? <HiOutlineX /> : <HiPencilAlt />} event={toggleForm} />
+      <BaseButton type="btnPrimary" display={showForm ? <HiOutlineX /> : <HiPencilAlt />} event={addQuote} />
     </div>
   );
 }

@@ -1,8 +1,8 @@
 $text-primary-color: #333;
 $background-primary-color: whitesmoke;
 $main-white: #FFF;
-$accent-color: hotpink;
 $main-border-color: rgba($text-primary-color, 0.2);
+$red: #ff5252;
 $font-small: 12px;
 $font-normal: 14px;
 
@@ -22,7 +22,6 @@ body {
   padding: 1rem;
   overflow: auto;
 }
-
 
 @media screen and (max-width: 480px) {
   .container {

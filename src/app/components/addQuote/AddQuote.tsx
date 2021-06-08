@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-redeclare */
 import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
-import { HiOutlinePlus } from 'react-icons/hi';
 import styles from './AddQuote.module.scss';
 import BaseButton from '../utils/BaseButton';
 
@@ -40,8 +39,15 @@ function AddQuote({ addQuote, toggleForm }: AddQuote): JSX.Element {
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
         data-testid="add-quote-input"
+        placeholder="Enter a quote here..."
       />
-      <BaseButton type="btnPrimary" event={onClickAdd} display={<HiOutlinePlus />} data-testid="add-quote-btn" />
+      <BaseButton
+        type="btnOutlined"
+        event={onClickAdd}
+        display="Add"
+        data-testid="add-quote-btn"
+        disabled={input.length < 1}
+      />
     </div>
   );
 }

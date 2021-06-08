@@ -12,11 +12,11 @@ describe('<ToolBar />', () => {
 
   afterEach(cleanup);
 
-  const mockToggleForm = jest.fn();
+  const mockAddQuote = jest.fn();
 
   const defaultProps: ToolBar = {
     showForm: false,
-    toggleForm: mockToggleForm,
+    addQuote: mockAddQuote,
   };
 
   it('renders 1 buttons', () => {
